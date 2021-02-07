@@ -40,7 +40,22 @@ router.get('/:memeId', (req, res, next) => {
 }); 
 
 router.post('/', (req, res, next) => {
-    // TODO add POST route for /memes
+    const meme = new Meme({
+        id: new mongoose.Types.ObjectId(),
+        name: req.body.name,
+        caption: req.body.caption,
+        url: req.body.url
+    });
+    meme
+    .save()
+    .then(result => {
+        res.status(201).json(result);
+    })
+    .catch(err => {
+        res.status(500).json({
+            error: err
+        });
+    });
 })
 
 module.exports = router;
