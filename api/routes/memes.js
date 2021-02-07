@@ -7,14 +7,14 @@ const Meme = require('../models/meme');
 router.get('/', (req, res, next) => {
     Meme
     .find()
+    .select('name url caption')
     .limit(100)
-    .select('name caption url')
     .exec()
     .then(result => {
-        if (!result) {
+        if (result.length > 0) {
             res.status(200).json(result);
         } else {
-            res.status(404);
+            res.status(404).json(result);
         }
     })
     .catch(err => {
@@ -28,6 +28,7 @@ router.get('/:memeId', (req, res, next) => {
     const id = req.params.memeId;
     Meme
     .findById(id)
+    .select('name url caption')
     .exec()
     .then(result => {
         res.status(200).json(result);
@@ -49,7 +50,9 @@ router.post('/', (req, res, next) => {
     meme
     .save()
     .then(result => {
-        res.status(201).json(result);
+        res.status(201).json({
+            id: result._id
+        });
     })
     .catch(err => {
         res.status(500).json({
