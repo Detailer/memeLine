@@ -41,7 +41,7 @@ router.get('/:memeId', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
     const meme = new Meme({
-        id: new mongoose.Types.ObjectId(),
+        _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
         caption: req.body.caption,
         url: req.body.url

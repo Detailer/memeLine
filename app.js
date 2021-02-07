@@ -7,14 +7,12 @@ const { urlencoded, json } = require('express');
 const memeRoutes = require('./api/routes/memes');
 
 // Connecting to MongoDB
-mongoose.connect('mongodb+srv://firstSample:'
-    + process.env.MONGODB_ATLAS_PW
-    + '@cluster0.dcnnt.mongodb.net/testDB1?retryWrites=true&w=majority',
+mongoose.connect("mongodb+srv://firstSample:firstSample@cluster0.dcnnt.mongodb.net/testDB?retryWrites=true&w=majority",
     {
         useNewUrlParser: true,
-        useUnifiedTopology: true
-    });
-
+        useUnifiedTopology: true 
+    }
+);
 // Enable Logging 
 app.use(morgan('dev'));
 
