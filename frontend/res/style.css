@@ -4,6 +4,8 @@ html, body {
     font-family: Lato;
 }
 
+/* SCROLL BAR BEGIN */
+
 /* width */
 ::-webkit-scrollbar {
     width: 5px;
@@ -24,6 +26,8 @@ html, body {
     background: #555; 
 }
 
+/* SCROLL BAR END */
+
 .mainContainer{
     display: flex;
     height: 100%;
@@ -39,6 +43,10 @@ html, body {
     align-items: center;
 }
 
+#title {
+    text-align: center;
+}
+
 .right{
     display: flex;
     height: 100%;
@@ -49,9 +57,12 @@ html, body {
 }
 
 #memeStream{
-    width: 50%;
+    display: flex;
+    width: 100%;
     height: 100%;
     overflow: auto;
+    flex-direction: column;
+    align-items: center;
 }
 
 #memeImg{
@@ -72,8 +83,27 @@ html, body {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    margin-left: 23%;
   }
 
   .button:hover {
       background-color: #757575;
   }
+
+  @media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+        .mainContainer{
+            flex-direction: column;
+        }
+        .left {
+            width: 100%;
+            /* border-bottom: 5px solid #757575; */
+        }
+        .right {
+            width: 100%;
+        }
+        #memeStream{
+            width: 100%;
+        }
+    }
+    
