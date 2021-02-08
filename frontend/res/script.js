@@ -8,14 +8,22 @@ function getMemes() {
         console.log(data);
         for (var i = 0; i < data.length; i++){
             var singleMeme = document.createElement('div');
+            var memeCaption = document.createElement('div');
+            var memeUser = document.createElement('div');
+            var memeImg = document.createElement('img');
+            
             singleMeme.setAttribute('class', 'memeContainer');
-            var div = document.createElement('div');
-            var img = document.createElement('img');
-            img.setAttribute('id', 'memeImg');
-            div.innerHTML = '<b>' + data[i].caption + '</b><Br>' + data[i].name;
-            img.src = data[i].url;
-            singleMeme.appendChild(div);
-            singleMeme.appendChild(img);
+            memeCaption.setAttribute('id', 'memeCaption');
+            memeUser.setAttribute('id', 'memeUser');
+            memeImg.setAttribute('id', 'memeImg');
+            
+            memeCaption.innerHTML = data[i].caption;
+            memeUser.innerHTML = 'By ' + data[i].name;
+            memeImg.src = data[i].url;
+            
+            singleMeme.appendChild(memeCaption);
+            singleMeme.append(memeUser);
+            singleMeme.appendChild(memeImg);
             memeContainer.appendChild(singleMeme);
         }
     })
@@ -25,6 +33,7 @@ function getMemes() {
 getMemes();
 
 document.getElementById('memeForm').onsubmit = function() {
+
     var content = {
         name : document.getElementById('name').value,
         caption: document.getElementById('caption').value,
@@ -41,7 +50,7 @@ document.getElementById('memeForm').onsubmit = function() {
     .then(res => {
         console.log(res);
         document.getElementById('memeForm').reset();
-        memeContainer.innerHTML = "";
+        memeContainer.innerHTML = '';
         getMemes();
     })
     .catch(err => console.log(err));
