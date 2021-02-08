@@ -54,15 +54,17 @@ html, body {
     display: flex;
     align-items: center;
     flex-direction: column;
+    width: 80%;
 }
 
 #memeForm > input{
     margin: 10px;
-    width: 200%;
+    width: 100%;
 }
 
 #title {
     text-align: center;
+    font-size: xx-large;
 }
 
 .shadow {
@@ -148,6 +150,6 @@ html, body {
             width: 100%;
             height: 400px;
             object-fit: contain;
-        }
+        }        
     }
     
