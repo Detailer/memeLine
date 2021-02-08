@@ -12,7 +12,7 @@ function getMemes() {
             var div = document.createElement('div');
             var img = document.createElement('img');
             img.setAttribute('id', 'memeImg');
-            div.innerHTML = '<b>Name</b>: ' + data[i].name + '<Br>' + '<b>Caption</b>: ' + data[i].caption;
+            div.innerHTML = '<b>' + data[i].caption + '</b><Br>' + data[i].name;
             img.src = data[i].url;
             singleMeme.appendChild(div);
             singleMeme.appendChild(img);
@@ -40,6 +40,7 @@ document.getElementById('memeForm').onsubmit = function() {
     })
     .then(res => {
         console.log(res);
+        document.getElementById('memeForm').reset();
         memeContainer.innerHTML = "";
         getMemes();
     })
