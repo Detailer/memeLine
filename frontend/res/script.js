@@ -8,6 +8,7 @@ function getMemes() {
         console.log(data);
         for (var i = 0; i < data.length; i++){
             var singleMeme = document.createElement('div');
+            singleMeme.setAttribute('class', 'memeContainer');
             var div = document.createElement('div');
             var img = document.createElement('img');
             img.setAttribute('id', 'memeImg');
