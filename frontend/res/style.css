@@ -1,6 +1,27 @@
 html, body {
     height: 100%;
     margin: 0px;
+    font-family: Lato;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
 }
 
 .mainContainer{
@@ -13,7 +34,7 @@ html, body {
     display: flex;
     width: 30%;
     height: 100%;
-    background-color: grey;
+    background-color: white;
     justify-content: center;
     align-items: center;
 }
@@ -22,6 +43,37 @@ html, body {
     display: flex;
     height: 100%;
     width: 70%;
+    background-color: #fafafa;
     justify-content: center;
     align-items: center;
 }
+
+#memeStream{
+    width: 50%;
+    height: 100%;
+    overflow: auto;
+}
+
+#memeImg{
+    width: 400px;
+    height: 400px;
+    border-bottom: 1px solid #bdbdbd;
+    object-fit: contain;
+}
+
+.button {
+    background-color: #616161;
+    border: none;
+    color: white;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  .button:hover {
+      background-color: #757575;
+  }

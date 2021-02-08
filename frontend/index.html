@@ -2,28 +2,29 @@
 <html>
     <head>
         <link rel="stylesheet" href="res/style.css">
+        <script src="res/script.js" defer></script>
     </head>
     <body>
         <div class = "mainContainer">
             <div class = "left">
                 <!-- TODO ADD FORM -->
                 <div id="memeForm">
-                    <h2>form details.</h2>
-                    <form action="#">
+                    <h2>memeLINE.</h2>
+                    <form id="memeForm">
                         <label for="name">Name:</label><br>
-                        <input type="text" id="name" name="name" value="John"><br>
+                        <input type="text" id="name" name="name" placeholder="John" required><br><br>
                         <label for="caption">Caption:</label><br>
-                        <input type="text" id="caption" name="caption" value="Something Witty"><br>
+                        <input type="text" id="caption" name="caption" placeholder="Something Witty" required><br><br>
                         <label for="url">URL:</label><br>
-                        <input type="text" id="url" name="url" value="Valid Image URL"><br><br>
-                        <input type="submit" value="Submit">
+                        <input type="text" id="url" name="url" placeholder="Valid Image URL" required><br><br>
+                        <input class="button" type="submit" value="Submit">
                     </form> 
                 </div>
             </div>
             <div class = "right">
                 <!-- TODO ADD STREAM -->
                 <div id="memeStream" >
-                    <h2>Meme Stream <br> Will Appear Here</h2>
+                    <!-- Fill from API -->
                 </div>
             </div>
         </div>
