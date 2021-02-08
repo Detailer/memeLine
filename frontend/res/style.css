@@ -37,7 +37,6 @@ html, body {
 .left{
     display: flex;
     width: 30%;
-    height: 100%;
     background-color: white;
     justify-content: center;
     align-items: center;
@@ -102,9 +101,9 @@ html, body {
 
 .right{
     display: flex;
-    height: 100%;
     width: 70%;
     background-color: #fafafa;
+    overflow: auto;
     justify-content: center;
     align-items: center;
 }
@@ -119,8 +118,8 @@ html, body {
 }
 
 .memeContainer{
-    padding: 5px 0 5px 0;
-    border-bottom: 1px solid #bdbdbd;
+    padding: 5px 10px 5px 10px;
+    margin: 8px 0 8px 0;
 }
 
 #memeCaption{
@@ -141,6 +140,10 @@ html, body {
     object-fit: contain;
 }
 
+hr{
+    border: 1px solid #e0e0e0;
+}
+
 @media only screen and (max-width: 768px) 
     and (orientation:portrait){
 /* For mobile phones in potrait: */
@@ -154,6 +157,10 @@ html, body {
         width: 100%;
     }
     #memeStream{
+        width: 100%;
+        overflow-x: hidden;
+    }
+    .memeContainer{
         width: 100%;
     }
     #memeImg{
@@ -177,6 +184,7 @@ html, body {
         }
         #memeStream{
             width: 100%;
+            overflow-x: hidden;
         }
         #memeImg{
             width: 100%;

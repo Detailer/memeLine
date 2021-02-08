@@ -12,13 +12,13 @@ function getMemes() {
             var memeUser = document.createElement('div');
             var memeImg = document.createElement('img');
             
-            singleMeme.setAttribute('class', 'memeContainer');
+            singleMeme.setAttribute('class', 'memeContainer shadow');
             memeCaption.setAttribute('id', 'memeCaption');
             memeUser.setAttribute('id', 'memeUser');
             memeImg.setAttribute('id', 'memeImg');
             
             memeCaption.innerHTML = data[i].caption;
-            memeUser.innerHTML = 'By ' + data[i].name;
+            memeUser.innerHTML = 'By ' + data[i].name + '<hr>';
             memeImg.src = data[i].url;
             
             singleMeme.appendChild(memeCaption);
