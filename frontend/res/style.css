@@ -72,6 +72,13 @@ html, body {
     object-fit: contain;
 }
 
+.formField{
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 2px;
+}
+
 .button {
     background-color: #616161;
     border: none;
@@ -97,6 +104,7 @@ html, body {
         }
         .left {
             width: 100%;
+            /* background-color: #eeeeee; */
             /* border-bottom: 5px solid #757575; */
         }
         .right {

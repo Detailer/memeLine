@@ -11,13 +11,13 @@
                 <!-- TODO ADD FORM -->
                 <div id="memeForm">
                     <h2 id="title">memeLINE.</h2>
-                    <form id="memeForm">
-                        <label for="name">Name:</label><br>
-                        <input type="text" id="name" name="name" placeholder="John" required><br><br>
-                        <label for="caption">Caption:</label><br>
-                        <input type="text" id="caption" name="caption" placeholder="Something Witty" required><br><br>
-                        <label for="url">URL:</label><br>
-                        <input type="text" id="url" name="url" placeholder="Valid Image URL" required><br><br>
+                    <form id="memeForm" autocomplete="off">
+                        <!-- <label for="name">Name:</label><br> -->
+                        <input type="text" class="formField" id="name" name="name" placeholder="Name" required><br><br>
+                        <!-- <label for="caption">Caption:</label><br> -->
+                        <input type="text" class="formField" id="caption" name="caption" placeholder="A Witty Caption" required><br><br>
+                        <!-- <label for="url">URL:</label><br> -->
+                        <input type="text" class="formField" id="url" name="url" placeholder="Valid Image URL" required><br><br>
                         <input class="button" type="submit" value="Submit"><br><br>
                     </form> 
                 </div>
