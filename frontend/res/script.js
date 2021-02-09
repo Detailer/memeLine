@@ -4,7 +4,6 @@ function getMemes() {
 	fetch("http://localhost:8080/memes")
 		.then((res) => res.json())
 		.then((data) => {
-			data.reverse();
 			console.log(data);
 			for (var i = 0; i < data.length; i++) {
 				var singleMeme = document.createElement("div");
