@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const { urlencoded, json } = require("express");
 const cors = require("cors");
+require('dotenv').config();
 
 const memeRoutes = require("./api/routes/memes");
 

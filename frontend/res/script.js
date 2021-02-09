@@ -1,7 +1,8 @@
-var memeContainer = document.getElementById("memeStream");
+var memeContainer = document.getElementById('memeStream');
+var apiUrl = 'http://localhost:8081/memes';
 
 function getMemes() {
-	fetch("http://localhost:8080/memes")
+	fetch(apiUrl)
 		.then((res) => res.json())
 		.then((data) => {
 			console.log(data);
@@ -31,14 +32,14 @@ function getMemes() {
 
 getMemes();
 
-document.getElementById("memeForm").onsubmit = function () {
+document.getElementById('memeForm').onsubmit = function () {
 	var content = {
 		name: document.getElementById("name").value,
 		caption: document.getElementById("caption").value,
 		url: document.getElementById("url").value,
 	};
 	console.log(content);
-	fetch("http://localhost:8080/memes", {
+	fetch(apiUrl, {
 		method: "post",
 		headers: {
 			"Content-Type": "application/json",
