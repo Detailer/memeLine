@@ -108,6 +108,12 @@ a:hover::after {
 	border: none;
 	border-bottom: 1px solid black;
 	padding: 2px;
+	font-size: medium;
+}
+
+input[type=text]:focus::placeholder {
+	color: black;
+	font-weight: bold;
 }
 
 .button {
