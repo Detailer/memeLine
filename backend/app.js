@@ -1,10 +1,12 @@
 const express = require("express");
 const app = express();
-const morgan = require("morgan");
 const mongoose = require("mongoose");
 const { urlencoded, json } = require("express");
 const cors = require("cors");
-require('dotenv').config();
+
+// Dependency for Testing
+// require('dotenv').config();
+// const morgan = require("morgan");
 
 const memeRoutes = require("./api/routes/memes");
 
@@ -18,8 +20,9 @@ mongoose.connect(
 		useUnifiedTopology: true,
 	}
 );
+
 // Enable Logging
-app.use(morgan("dev"));
+// app.use(morgan("dev"));
 
 // Enable URL and JSON Parser
 app.use(urlencoded({ extended: false }));
