@@ -136,7 +136,7 @@ a:hover::after {
 	overflow: auto;
 	justify-content: center;
     align-items: center;
-    background: url('img.png');
+    background: url('img/img.png');
 }
 
 #memeStream {
