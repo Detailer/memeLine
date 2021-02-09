@@ -45,7 +45,7 @@ a::after {
 	position: absolute;
 	left: 0;
 	bottom: .07em;
-	height: .1em;
+	height: .2em;
 	width: 100%;
 	background: linear-gradient(110deg, #e1f549, #29d0be, #6cb8ea, #ff5959);
 	z-index: -1;
@@ -53,7 +53,7 @@ a::after {
 }
 
 a:hover::after {
-	height: .2em;
+	height: .3em;
 }
 
 /* LINK RAINBOW EFFECT END */
