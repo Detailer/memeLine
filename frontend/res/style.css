@@ -6,6 +6,7 @@ body {
 }
 
 /* SCROLL BAR BEGIN */
+/* https://codepen.io/devstreak/pen/dMYgeO */
 
 /* width */
 ::-webkit-scrollbar {
@@ -28,6 +29,34 @@ body {
 }
 
 /* SCROLL BAR END */
+
+/* LINK RAINBOW EFFECT */
+/* https://codepen.io/cssparadise/pen/ExxayxM */
+a {
+	display: inline-block;
+	position: relative;
+	text-decoration: none;
+	color: inherit;
+	z-index: 1;
+}
+
+a::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: .07em;
+	height: .1em;
+	width: 100%;
+	background: linear-gradient(110deg, #e1f549, #29d0be, #6cb8ea, #ff5959);
+	z-index: -1;
+	transition: height .25s cubic-bezier(.6,0,.4,1);
+}
+
+a:hover::after {
+	height: .2em;
+}
+
+/* LINK RAINBOW EFFECT END */
 
 .mainContainer {
 	display: flex;
@@ -151,6 +180,12 @@ body {
 
 hr {
 	border: 1px solid #e0e0e0;
+}
+
+#detaTag{
+	font-size: small;
+	color: #000;	
+	margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 768px) and (orientation: portrait) {
