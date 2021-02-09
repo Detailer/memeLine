@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "author": "detailer",
   "license": "ISC",
@@ -19,6 +19,6 @@
     "morgan": "^1.10.0"
   },
   "engines": {
-        "node": "v15.6.0"
+    "node": "v15.6.0"
   }
 }
