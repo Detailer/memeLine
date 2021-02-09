@@ -1,27 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="res/style.css">
-        <script src="res/script.js" defer></script>
-    </head>
-    <body>
-        <div class = "mainContainer">
-            <div class = "left shadow">
-                <div id="memeFormDiv">
-                    <h2 id="title">memeLINE.</h2>
-                    <form id="memeForm" autocomplete="off">
-                        <input type="text" class="formField" id="name" name="name" placeholder="Name" required>
-                        <input type="text" class="formField" id="caption" name="caption" placeholder="A Witty Caption" required>
-                        <input type="text" class="formField" id="url" name="url" placeholder="Image URL" pattern=".*\.*(jpeg|jpg|gif|png)$" required>
-                        <input class="button" type="submit" value="Submit">
-                    </form> 
-                </div>
-            </div>
-            <div class = "right">
-                <div id="memeStream" >
-             </div>
-            </div>
-        </div>
-    </body>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="res/style.css" />
+		<script src="res/script.js" defer></script>
+	</head>
+	<body>
+		<div class="mainContainer">
+			<div class="left shadow">
+				<div id="memeFormDiv">
+					<h2 id="title">memeLINE.</h2>
+					<form id="memeForm" autocomplete="off">
+						<input
+							type="text"
+							class="formField"
+							id="name"
+							name="name"
+							placeholder="Name"
+							required
+						/>
+						<input
+							type="text"
+							class="formField"
+							id="caption"
+							name="caption"
+							placeholder="A Witty Caption"
+							required
+						/>
+						<input
+							type="text"
+							class="formField"
+							id="url"
+							name="url"
+							placeholder="Image URL"
+							pattern=".*\.*(jpeg|jpg|gif|png)$"
+							required
+						/>
+						<input class="button" type="submit" value="Submit" />
+					</form>
+				</div>
+			</div>
+			<div class="right">
+				<div id="memeStream"></div>
+			</div>
+		</div>
+	</body>
 </html>
