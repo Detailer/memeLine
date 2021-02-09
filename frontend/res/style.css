@@ -129,6 +129,16 @@ a:hover::after {
 	background-color: #757575;
 }
 
+#detaTag{
+	font-size: small;
+	color: #757575;	
+	margin-bottom: 10px;
+}
+
+#detaTagLink{
+	color: black;
+}
+
 .right {
 	display: flex;
 	width: 70%;
@@ -180,12 +190,6 @@ a:hover::after {
 
 hr {
 	border: 1px solid #e0e0e0;
-}
-
-#detaTag{
-	font-size: small;
-	color: #000;	
-	margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 768px) and (orientation: portrait) {
