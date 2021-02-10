@@ -1,0 +1,137 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "1.0.0",
+		"title": "memeLine",
+		"description": "memeLINE Application API Documentation",
+		"license": {
+			"name": "MIT",
+			"url": "https://opensource.org/licenses/MIT"
+		}
+	},
+	"host": "localhost:8081",
+	"basePath": "/",
+	"tags": [
+		{
+			"name": "memes",
+			"description": "API for memems in the stream"
+		}
+	],
+	"schemes": ["http"],
+	"consumes": ["application/json"],
+	"produces": ["application/json"],
+	"paths": {
+		"/memes": {
+			"get": {
+				"tags": ["memes"],
+				"summary": "Get latest 100 memes from the stream",
+				"description": "",
+				"operationId": "getMeme",
+				"produces": ["application/json"],
+				"responses": {
+					"404": {
+						"description": "No memes to fetch"
+					}
+				}
+			},
+			"post": {
+				"tags": ["memes"],
+				"summary": "Add a new meme to the stream",
+				"description": "",
+				"operationId": "addMeme",
+				"consumes": ["application/json"],
+				"produces": ["application/xml"],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "meme object that needs to be added to the stream",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/meme"
+						}
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "Successfully Created Meme"
+					},
+					"400": {
+						"description": "Invalid input"
+					}
+				}
+			}
+		},
+		"/memes/{memeId}": {
+			"get": {
+				"tags": ["memes"],
+				"summary": "Find meme by ID",
+				"description": "Returns a single meme",
+				"operationId": "getMemeById",
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "memeId",
+						"in": "path",
+						"description": "ID of meme to return",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "successful operation",
+						"schema": {
+							"$ref": "#/definitions/returnedMeme"
+						}
+					},
+					"400": {
+						"description": "Invalid ID supplied"
+					},
+					"404": {
+						"description": "Meme not found"
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"meme": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"caption": {
+					"type": "string"
+				},
+				"url": {
+					"type": "string",
+					"description": "URL to the meme image"
+				}
+			}
+		},
+		"returnedMeme": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"caption": {
+					"type": "string"
+				},
+				"url": {
+					"type": "string",
+					"description": "URL to the meme image"
+				}
+			}
+		}
+	},
+	"externalDocs": {
+		"description": "Find out more about Swagger",
+		"url": "http://swagger.io"
+	}
+}

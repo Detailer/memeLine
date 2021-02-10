@@ -48,7 +48,7 @@ router.get('/:memeId', (req, res, next) => {
     .select('name url caption')
     .exec()
     .then(result => {
-        if (!result){
+        if (result){
             res.status(200).json({
                 id: result._id,
                 name: result.name,
@@ -56,11 +56,13 @@ router.get('/:memeId', (req, res, next) => {
                 url: result.url
             });
         }else{
-            res.status(404).json();
+            res.status(404).json({
+                error: 'Meme Not Found'
+            });
         }
     })
     .catch(err => {
-        res.status(404).json({
+        res.status(400).json({
             error: err.message
         });
     });
@@ -88,7 +90,7 @@ router.post('/', (req, res, next) => {
         });
     }
     else{
-        res.status(400).json({
+        res.status(405).json({
             error: 'Provide Image URL Only!'
         })
     }

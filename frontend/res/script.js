@@ -1,6 +1,7 @@
 var memeContainer = document.getElementById('memeStream');
 var apiUrl = 'https://memeline.herokuapp.com/memes';
 
+
 function getMemes() {
 	fetch(apiUrl)
 		.then((res) => res.json())

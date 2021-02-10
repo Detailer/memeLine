@@ -4,9 +4,11 @@ const mongoose = require("mongoose");
 const { urlencoded, json } = require("express");
 const cors = require("cors");
 
+
 // Dependency for Testing
-// require('dotenv').config();
+require('dotenv').config();
 // const morgan = require("morgan");
+// app.use(morgan("dev"));
 
 const memeRoutes = require("./api/routes/memes");
 
@@ -21,15 +23,24 @@ mongoose.connect(
 	}
 );
 
-// Enable Logging
-// app.use(morgan("dev"));
-
 // Enable URL and JSON Parser
 app.use(urlencoded({ extended: false }));
 app.use(json());
 
 // Handling CORS
 app.use(cors());
+
+// Enable Swagger UI for API Documentation
+const swaggerUi = require('swagger-ui-express');
+swaggerDocument = require('./swagger.json');
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// const swaggerApp = express();
+// const swaggerPort = 8080;
+// swaggerApp.use(cors());
+// swaggerApp.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// swaggerApp.listen(swaggerPort, () => {
+// 	console.log('Swagger up and running on port: '+swaggerPort)
+// });
 
 // Route to /memes
 app.use("/memes", memeRoutes);
