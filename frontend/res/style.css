@@ -82,7 +82,7 @@ a:hover::after {
 #imgLogo{
 	border-radius: 50%;
 	border: 2px solid #eee;
-	width: 200px;
+	width: 25%;
 }
 
 #title {
@@ -251,7 +251,38 @@ hr {
 		width: 100%;
 	}
 	#imgLogo{
-		width: 75px;
+		width: 20%;
+	}
+	.right {
+		width: 100%;
+	}
+	#memeStream {
+		width: 100%;
+		overflow-x: hidden;
+	}
+	.memeContainer{
+		width: 80%;
+		margin: 5px 0 5px 0;
+		padding: 5px 5px 5px 5px;
+	}
+	#memeCaption {
+		font-size: x-large;
+	}
+	#memeImg {
+		width: 100%;
+		object-fit: contain;
+	}
+}
+@media only screen and (max-height: 300px) and (orientation: landscape) {
+	/* For smol mobile phones in landscape: */
+	.mainContainer {
+		flex-direction: row;
+	}
+	.left {
+		width: 100%;
+	}
+	#imgLogo{
+		display: none;
 	}
 	.right {
 		width: 100%;
