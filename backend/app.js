@@ -33,7 +33,7 @@ app.use(cors());
 // Enable Swagger UI for API Documentation
 const swaggerUi = require('swagger-ui-express');
 swaggerDocument = require('./swagger.json');
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/swagger-ui', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // const swaggerApp = express();
 // const swaggerPort = 8080;
 // swaggerApp.use(cors());
