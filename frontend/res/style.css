@@ -79,15 +79,24 @@ a:hover::after {
 	/* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
+#imgLogo{
+	border-radius: 50%;
+	border: 2px solid #eee;
+	width: 200px;
+}
+
 #title {
 	text-align: center;
 	font-size: xx-large;
+	margin-top: 0.3rem;
+	margin-bottom: 0.3rem;
 }
 
 #memeFormDiv {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	align-items: center;
 }
 
@@ -206,6 +215,12 @@ hr {
 	.left {
 		width: 100%;
 	}
+	#imgLogo{
+		display: none;
+	}
+	#detaTag{
+		margin-bottom: 0.3rem;
+	}
 	.right {
 		width: 100%;
 	}
@@ -234,6 +249,9 @@ hr {
 	}
 	.left {
 		width: 100%;
+	}
+	#imgLogo{
+		width: 75px;
 	}
 	.right {
 		width: 100%;
