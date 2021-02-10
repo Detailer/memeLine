@@ -5,7 +5,7 @@ const { urlencoded, json } = require("express");
 const cors = require("cors");
 
 // Dependency for Testing
-//  require('dotenv').config();
+// require('dotenv').config();
 // const morgan = require("morgan");
 
 const memeRoutes = require("./api/routes/memes");
@@ -37,7 +37,7 @@ app.use("/memes", memeRoutes);
 // Handle Errors
 app.use((req, res, next) => {
 	const error = new Error("Not Found!");
-	error.status(404);
+	error.status = 404;
 	next(error);
 });
 
