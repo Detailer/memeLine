@@ -5,15 +5,12 @@ var apiUrl = 'https://memeline.herokuapp.com/memes';
 function getDateFromId(id){
 	// first 4 bytes are the timestamp portion (8 hex chars)
 	var timehex = id.substring(0,8);
-	console.log(timehex); // gives: 4f94c2a1
-
+	
 	// convert to a number... base 16
 	var secondsSinceEpoch = parseInt(timehex, 16);
-	console.log(secondsSinceEpoch); // gives: 1335149217
-
+	
 	// convert to milliseconds, and create a new date
 	var dt = new Date(secondsSinceEpoch*1000);
-	console.log(dt); // gives: Sun Apr 22 2012 22:46:57 GMT-0400 (EDT)
 	return dt;
 }
 
