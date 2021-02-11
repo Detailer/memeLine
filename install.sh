@@ -11,6 +11,5 @@ sudo systemctl enable mongod
 
 # Installing Node.Js from nvm
 echo "Installing Node.Js"
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-. ~/.nvm/nvm.sh
-nvm install 15.6.0
+curl -sL https://deb.nodesource.com/setup_15.x | sudo -E bash -
+sudo apt-get install -y nodejs
