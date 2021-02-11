@@ -9,7 +9,7 @@
       "url": "https://opensource.org/licenses/MIT"
     }
   },
-  "host": "https://memeline.herokuapp.com",
+  "host": "memeline.herokuapp.com",
   "basePath": "/",
   "tags": [
     {
