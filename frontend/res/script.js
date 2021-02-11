@@ -17,34 +17,38 @@ function getDateFromId(id){
 	return dt;
 }
 
+function jsonToHtml(data) {
+	var singleMeme = document.createElement("div");
+	var memeCaption = document.createElement("div");
+	var memeUser = document.createElement("div");
+	var memeDate = document.createElement("div");
+	var memeImg = document.createElement("img");
+
+	singleMeme.setAttribute("class", "memeContainer shadow");
+	memeCaption.setAttribute("id", "memeCaption");
+	memeUser.setAttribute("id", "memeUser");
+	memeDate.setAttribute("id", "memeDate");
+	memeImg.setAttribute("id", "memeImg");
+
+	memeCaption.innerHTML = data.caption;
+	memeUser.innerHTML = "By " + data.name + "<hr>";
+	memeImg.src = data.url;
+	memeDate.innerHTML = getDateFromId(data.id);
+
+	singleMeme.appendChild(memeCaption);
+	singleMeme.append(memeUser);
+	singleMeme.appendChild(memeImg);
+	singleMeme.appendChild(memeDate);
+	memeContainer.appendChild(singleMeme);
+}
+
 function getMemes() {
 	fetch(apiUrl)
 		.then((res) => res.json())
 		.then((data) => {
 			console.log(data);
 			for (var i = 0; i < data.length; i++) {
-				var singleMeme = document.createElement("div");
-				var memeCaption = document.createElement("div");
-				var memeUser = document.createElement("div");
-				var memeDate = document.createElement("div");
-				var memeImg = document.createElement("img");
-
-				singleMeme.setAttribute("class", "memeContainer shadow");
-				memeCaption.setAttribute("id", "memeCaption");
-				memeUser.setAttribute("id", "memeUser");
-				memeDate.setAttribute("id", "memeDate");
-				memeImg.setAttribute("id", "memeImg");
-
-				memeCaption.innerHTML = data[i].caption;
-				memeUser.innerHTML = "By " + data[i].name + "<hr>";
-				memeImg.src = data[i].url;
-				memeDate.innerHTML = getDateFromId(data[i].id);
-
-				singleMeme.appendChild(memeCaption);
-				singleMeme.append(memeUser);
-				singleMeme.appendChild(memeImg);
-				singleMeme.appendChild(memeDate);
-				memeContainer.appendChild(singleMeme);
+				jsonToHtml(data[i]);
 			}
 		})
 		.catch((err) => console.log(err));
