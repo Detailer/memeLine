@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const { update } = require('../models/meme');
 
 const Meme = require('../models/meme');
 
@@ -41,33 +42,6 @@ router.get('/', (req, res, next) => {
     });
 });
 
-router.get('/:memeId', (req, res, next) => {
-    const id = req.params.memeId;
-    Meme
-    .findById(id)
-    .select('name url caption')
-    .exec()
-    .then(result => {
-        if (result){
-            res.status(200).json({
-                id: result._id,
-                name: result.name,
-                caption: result.caption,
-                url: result.url
-            });
-        }else{
-            res.status(404).json({
-                error: 'Meme Not Found'
-            });
-        }
-    })
-    .catch(err => {
-        res.status(400).json({
-            error: err.message
-        });
-    });
-}); 
-
 router.post('/', (req, res, next) => {
     const meme = new Meme({
         _id: new mongoose.Types.ObjectId(),
@@ -95,5 +69,55 @@ router.post('/', (req, res, next) => {
         })
     }
 })
+
+router.get('/:memeId', (req, res, next) => {
+    const id = req.params.memeId;
+    Meme
+    .findById(id)
+    .select('name url caption')
+    .exec()
+    .then(result => {
+        if (result){
+            res.status(200).json({
+                id: result._id,
+                name: result.name,
+                caption: result.caption,
+                url: result.url
+            });
+        }else{
+            res.status(404).json({
+                error: 'Meme Not Found'
+            });
+        }
+    })
+    .catch(err => {
+        res.status(400).json({
+            error: err.message
+        });
+    });
+}); 
+
+router.patch('/:memeId', (req, res, next) => {
+    const id = req.params.memeId;
+    const updateOps = {};
+    for (const [key, value] of Object.entries(req.body)){
+        if (key != 'name'){
+            updateOps[key] = value;
+        }
+    }
+    Meme.updateOne({_id: id}, {$set : updateOps})
+    .exec()
+    .then(result => {
+        res.status(200).json({
+            message : 'Meme ID: ' + id + ' updated'
+        });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
+    });
+});
 
 module.exports = router;
