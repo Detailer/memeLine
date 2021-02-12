@@ -55,5 +55,31 @@
 				<div id="memeStream"></div>
 			</div>
 		</div>
+		<!-- The Modal -->
+		<div id="myModal" class="modal">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<form id="memeUpdateForm" autocomplete="off">
+					<input
+						type="text"
+						class="formField updateFormField"
+						id="updateCaption"
+						name="caption"
+						placeholder="A More Witty Caption"
+					/>
+					<input
+						type="text"
+						class="formField updateFormField"
+						id="updateUrl"
+						name="url"
+						placeholder="New Image URL"
+						pattern=".*\.*(jpeg|jpg|gif|png)$"
+					/>
+					<input class="button updateFromButton" type="submit" value="Submit" />
+				</form>
+			</div>
+		</div>
+		<!-- The Modal End -->
 	</body>
 </html>
