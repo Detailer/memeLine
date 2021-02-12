@@ -13,7 +13,6 @@ function checkURL(url) {
 
 // GET Route at memes/
 router.get("/", (req, res, next) => {
-    
     // Find and display latest 100 memes from DB
 	Meme.find()
 		.sort({ _id: -1 })
@@ -55,54 +54,55 @@ router.post("/", (req, res, next) => {
 		caption: req.body.caption,
 		url: req.body.url,
 	});
-	if (checkURL(meme.url)) {
-        // Send object if URL is of image
-		meme
-			.save()
-			.then((result) => {
-				res.status(201).json({
-					id: result._id,
-				});
-			})
-			.catch((err) => {
-				res.status(500).json({
-					error: err,
-				});
-			});
-	} else {
-        // return 405 if no image URL provided
-		res.status(405).json({
-			error: "Provide Image URL Only!",
+	meme
+	.save()
+	.then((result) => {
+		res.status(201).json({
+			id: result._id,
 		});
-	}
+	})
+	.catch((err) => {
+		res.status(500).json({
+			error: err,
+		});
+	});
 });
 
 // GET Route at memes/memeID
 router.get("/:memeId", (req, res, next) => {
     // find meme from DB from provided ID
 	const id = req.params.memeId;
-	Meme.findById(id)
-		.select("name url caption")
-		.exec()
-		.then((result) => {
-			if (result) {
-				res.status(200).json({
-					id: result._id,
-					name: result.name,
-					caption: result.caption,
-					url: result.url,
+
+	// check if ID exists
+	Meme.count({_id: id}, function (err, count){ 
+		if(count > 0){
+			//ID exists, Query Result
+			Meme.findById(id)
+			.select("name url caption")
+			.exec()
+			.then((result) => {
+				if (result) {
+					res.status(200).json({
+						id: result._id,
+						name: result.name,
+						caption: result.caption,
+						url: result.url,
+					});
+				} else {
+					res.status(404).json({
+						error: "Meme Not Found",
+					});
+				}
+			})
+			.catch((err) => {
+				res.status(400).json({
+					error: err.message,
 				});
-			} else {
-				res.status(404).json({
-					error: "Meme Not Found",
-				});
-			}
-		})
-		.catch((err) => {
-			res.status(400).json({
-				error: err.message,
 			});
-		});
+		}else {
+			res.status(404).json();
+		}
+	}); 
 });
 
 // PATCH Route at memes/memeID
@@ -117,20 +117,25 @@ router.patch("/:memeId", (req, res, next) => {
 		}
 	}
 
-    // Update DB
-	Meme.updateOne({ _id: id }, { $set: updateOps })
-		.exec()
-		.then((result) => {
-			res.status(200).json({
-				message: "Meme ID: " + id + " updated",
+	// check if ID exists
+	Meme.count({_id: id}, function (err, count){ 
+		if(count > 0){
+			//ID exists, Update DB
+			Meme.updateOne({ _id: id }, { $set: updateOps })
+			.exec()
+			.then((result) => {
+				res.status(200).json();
+			})
+			.catch((err) => {
+				console.log(err);
+				res.status(500).json({
+					error: err,
+				});
 			});
-		})
-		.catch((err) => {
-			console.log(err);
-			res.status(500).json({
-				error: err,
-			});
-		});
+		}else {
+			res.status(404).json();
+		}
+	}); 
 });
 
 module.exports = router;
