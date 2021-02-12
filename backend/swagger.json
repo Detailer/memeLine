@@ -151,27 +151,23 @@
               "type": "object",
               "properties": {
                 "id": {
-                  "type": "string"
+                  "type": "string",
+                  "example": "memeId"
                 },
                 "name": {
-                  "type": "string"
+                  "type": "string",
+                  "example": "Jane"
                 },
                 "caption": {
-                  "type": "string"
+                  "type": "string",
+                  "example": "Something Funny"
                 },
                 "url": {
                   "type": "string",
-                  "description": "URL to the meme image"
+                  "description": "URL to the meme image",
+                  "example": "www.abc.com/meme.jpeg"
                 }
-              },
-              "example": [
-                {
-                  "id": "1sdfq",
-                  "name": "Jane",
-                  "caption": "Something Funny",
-                  "url": "www.abc.com/meme.jpeg"
-                }
-              ]
+              }
             }
           },
           "400": {
@@ -179,6 +175,65 @@
           },
           "404": {
             "description": "Meme Not Found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "memes"
+        ],
+        "summary": "Update meme by ID",
+        "description": "Updates the caption or/ and URL of a single meme",
+        "operationId": "patchMemeById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "memeId",
+            "in": "path",
+            "description": "ID of meme to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "meme object that needs to be added to the stream",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "caption": {
+                  "type": "string",
+                  "example": "New Caption (optional)"
+                },
+                "url": {
+                  "type": "string",
+                  "example": "New URL (optional)"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Meme ID {memeId} updated"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Meme Not Found"
+          },
+          "500": {
+            "description": "Internal Error"
           }
         }
       }
