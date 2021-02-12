@@ -1,5 +1,6 @@
 var memeContainer = document.getElementById('memeStream');
-var apiUrl = 'https://memeline.herokuapp.com/memes';
+// var apiUrl = 'https://memeline.herokuapp.com/memes';
+var apiUrl = 'http://localhost:8081/memes';
 
 // https://stackoverflow.com/questions/10346067/pull-date-from-mongo-id-on-the-client-side
 function getDateFromId(id){
@@ -71,7 +72,7 @@ document.getElementById('memeForm').onsubmit = function () {
 		headers: {
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify(content),
+		body: JSON.stringify(content)
 	})
 		.then((res) => {
 			console.log(res);
@@ -90,21 +91,52 @@ function editClick(button){
 
 	// When the user clicks the button, open the modal 
 	modal.style.display = "block";
-	console.log(button.id);
-
 
 	// Get the <span> element that closes the modal
 	var span = document.getElementsByClassName("close")[0];
 
 	// When the user clicks on <span> (x), close the modal
 	span.onclick = function() {
-	modal.style.display = "none";
+		modal.style.display = "none";
 	}
 
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) {
-	if (event.target == modal) {
-		modal.style.display = "none";
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
 	}
-	}
+
+	// Call the PATCH API
+	var submitButton = document.getElementById('updateFromSubmit');
+	submitButton.onclick = function(submitButton) {
+		var newCaption = document.getElementById("updateCaption").value;
+		var newUrl = document.getElementById("updateUrl").value;
+
+		// Only patch if at least one of the new fields is not empty
+		if (newCaption != '' || newUrl != ''){
+			var content = {};
+			if (newCaption != '')
+				content['caption'] = newCaption;
+			if (newUrl != '')
+				content['url'] = newUrl;
+			console.log(content);
+			console.log(button.id);
+			fetch(apiUrl + "/" + button.id, {
+				method: "PATCH",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(content),
+			})
+				.then((res) => {
+					// Update the Stream locally and close modal
+					document.getElementById("memeUpdateForm").reset();
+					memeContainer.innerHTML = "";
+					getMemes();
+					modal.style.display = "none";
+				})
+				.catch((err) => console.log(err));
+		}
+	};
 }
