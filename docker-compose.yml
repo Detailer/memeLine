@@ -1,0 +1,19 @@
+version: "3"
+services:
+      memeline_backend:
+          container_name: memeline_backend
+          image: memeline_backend
+          restart: always
+          build: .
+          ports:
+            - "8080:8080"
+            - "8081:8081"
+          environment:
+            - MONGODB_URL=mongodb://mongo:27017
+          links:
+            - mongo
+      mongo:
+            container_name: mongo
+            image: mongo
+            ports:
+              - '27018:27017'
