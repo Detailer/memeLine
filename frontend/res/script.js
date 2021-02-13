@@ -1,5 +1,5 @@
 var memeContainer = document.getElementById('memeStream');
-var apiUrl = 'https://memeline.herokuapp.com/memes';
+var apiUrl = 'http://localhost:8081/memes';
 
 // Function to conver MongoDB ID to timestamp
 // https://stackoverflow.com/questions/10346067/pull-date-from-mongo-id-on-the-client-side

@@ -31,14 +31,14 @@ app.use(cors());
 // Enable Swagger UI for API Documentation
 const swaggerUi = require('swagger-ui-express');
 swaggerDocument = require('./swagger.json');
-app.use('/swagger-ui', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-// const swaggerApp = express();
-// const swaggerPort = 8080;
-// swaggerApp.use(cors());
-// swaggerApp.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-// swaggerApp.listen(swaggerPort, () => {
-// 	console.log('Swagger up and running on port: '+swaggerPort)
-// });
+// app.use('/swagger-ui', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+const swaggerApp = express();
+const swaggerPort = 8080;
+swaggerApp.use(cors());
+swaggerApp.use('/swagger-ui', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+swaggerApp.listen(swaggerPort, () => {
+	console.log('Swagger up and running on port: '+swaggerPort)
+});
 
 // Route to /memes
 app.use("/memes", memeRoutes);
