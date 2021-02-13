@@ -54,17 +54,37 @@ router.post("/", (req, res, next) => {
 		caption: req.body.caption,
 		url: req.body.url,
 	});
-	meme
-	.save()
-	.then((result) => {
-		res.status(201).json({
-			id: result._id,
-		});
-	})
-	.catch((err) => {
-		res.status(500).json({
-			error: err,
-		});
+
+	// Check if Object with Same Payload Exists
+	Meme.countDocuments({name: req.body.name, caption: req.body.caption, url: req.body.url}, function(err, count){
+		// Catch Errors
+		if (err){
+			console.log(err);
+			res.status(500).json({
+				error: err
+			});
+		}
+		// Data already exist in DB
+		if (count != 0){
+			// Return with Status 409
+			res.status(409).json({
+				message: 'Same Meme Already Exists'
+			});
+		}else {
+			// Insert data in DB
+			meme
+				.save()
+				.then((result) => {
+					res.status(201).json({
+						id: result._id,
+					});
+				})
+				.catch((err) => {
+					res.status(500).json({
+						error: err,
+					});
+				});
+		}
 	});
 });
 
