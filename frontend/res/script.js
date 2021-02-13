@@ -28,6 +28,7 @@ function jsonToHtml(data) {
 	memeUser.setAttribute("id", "memeUser");
 	memeDate.setAttribute("id", "memeDate");
 	memeImg.setAttribute("id", "memeImg");
+	memeImg.setAttribute("onerror", "imgNotFound(this)");
 	editButton.setAttribute("class", "editButton");
 	editButton.setAttribute("id", data.id);
 	editButton.setAttribute("onclick", "editClick(this)");
@@ -83,6 +84,13 @@ document.getElementById('memeForm').onsubmit = function () {
 		.catch((err) => console.log(err));
 	return false;
 };
+
+// Image Not Found Error Handling
+function imgNotFound(image) {
+	image.onerror = '';
+	image.src = 'res/img/404img.jpg';
+	return true;
+}
 
 // Modal Popup Functionality
 function editClick(button){
