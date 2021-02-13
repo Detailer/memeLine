@@ -12,7 +12,7 @@ require('dotenv').config();
 const memeRoutes = require("./api/routes/memes");
 
 // Connecting to MongoDB
-mongoUrl = process.env.MONGO_URL || 'mongodb://localhost:27017/memes'
+mongoUrl = process.env.MONGODB_URL || 'mongodb://localhost:27017/memes'
 mongoose.connect(
 	mongoUrl,
 	{
