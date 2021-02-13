@@ -36,7 +36,7 @@ function jsonToHtml(data) {
 	memeCaption.innerHTML = data.caption;
 	editButton.innerHTML = "✎";
 	memeCaption.appendChild(editButton);
-	memeUser.innerHTML = "By " + data.name + "<hr>";
+	memeUser.innerHTML = "@" + data.name + "<hr>";
 	memeImg.src = data.url;
 	memeDate.innerHTML = getDateFromId(data.id);
 
