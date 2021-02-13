@@ -3,20 +3,18 @@ const app = express();
 const mongoose = require("mongoose");
 const { urlencoded, json } = require("express");
 const cors = require("cors");
-
+require('dotenv').config();
 
 // Dependency for Testing
-// require('dotenv').config();
 // const morgan = require("morgan");
 // app.use(morgan("dev"));
 
 const memeRoutes = require("./api/routes/memes");
 
 // Connecting to MongoDB
+mongoUrl = process.env.MONGO_URL || 'mongodb://localhost:27017/memes'
 mongoose.connect(
-	"mongodb+srv://firstSample:" +
-		process.env.MONGODB_ATLAS_PW +
-		"@samplecluster.dcnnt.mongodb.net/sampleDB?retryWrites=true&w=majority",
+	mongoUrl,
 	{
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
