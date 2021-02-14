@@ -9,7 +9,7 @@ services:
             - "8080:8080"
             - "8081:8081"
           environment:
-            - MONGODB_URL=mongodb://mongo:27017
+            - MONGODB_URL=mongodb://mongo:27017/memes
           links:
             - mongo
       mongo:
