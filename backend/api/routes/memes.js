@@ -80,9 +80,13 @@ router.post("/", (req, res, next) => {
 					});
 				})
 				.catch((err) => {
-					res.status(500).json({
-						error: err,
-					});
+					if (err.name === 'ValidationError'){
+						res.status(400).json();
+					}else {
+						res.status(500).json({
+							error: err,
+						});
+					}
 				});
 		}
 	});
