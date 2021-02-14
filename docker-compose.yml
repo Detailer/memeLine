@@ -17,4 +17,4 @@ services:
             image: mongo
             ports:
               - '27018:27017'
-            command: --quiet --logpath /dev/null 
+            command: --quiet --logpath /tmp/mongo.log
