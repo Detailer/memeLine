@@ -16,5 +16,5 @@ services:
             container_name: mongo
             image: mongo
             ports:
-              - '27018:27017'
+              - '27017:27017'
             command: --quiet --logpath /tmp/mongo.log
