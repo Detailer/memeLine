@@ -34,8 +34,8 @@ router.get("/", (req, res, next) => {
 				};
 				res.status(200).json(mappedResponse.result);
 			} else {
-                // return 404 if no memes found
-				res.status(404).json(result);
+                // return 200 if no memes found
+				res.status(200).json(result);
 			}
 		})
 		.catch((err) => {
